@@ -1,4 +1,13 @@
-<script setup></script>
+<script setup>
+import { ref } from 'vue'
+
+const escuro = ref(false) //tem esse pq o conteudo dela fica reativo, a tela atualiza sozinha, para utilizar precisar importar da biblioteca vue
+
+function alternarTema(){
+  escuro.value = !escuro.value// aqui faz inverter o valor com o !escuro.value
+  document.documentElement.classList.toggle('dark', escuro.value) //esse toggle serve para clocar ou retirar uma classe do elemento, quando for true ele coloca, quando false tira
+}
+</script>
 
 <template>
   <div class="min-h-screen bg-gray-100 transition-colors dark:bg-gray-900">
@@ -14,10 +23,11 @@
           <a href="#" class="rounded-lg px-3 py-2 transition-colors hover:bg-escola-700">Meus Pedidos</a>
           <a href="#" class="rounded-lg px-3 py-2 transition-colors hover:bg-escola-700">🛒 Carrinho</a>
           <button
+          @click ="alternarTema"
             class="rounded-lg px-2 py-2 transition-colors hover:bg-escola-700"
             title="Modo escuro"
           >
-            ☀️
+            {{escuro ? '☀️' : '🌙'}}
           </button>
         </div>
       </nav>

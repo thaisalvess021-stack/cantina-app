@@ -1,38 +1,12 @@
 <script setup>
-import { ref } from 'vue'
+import NavBar from './components/NavBar.vue';
 
-const escuro = ref(false) //tem esse pq o conteudo dela fica reativo, a tela atualiza sozinha, para utilizar precisar importar da biblioteca vue
-
-function alternarTema(){
-  escuro.value = !escuro.value// aqui faz inverter o valor com o !escuro.value
-  document.documentElement.classList.toggle('dark', escuro.value) //esse toggle serve para clocar ou retirar uma classe do elemento, quando for true ele coloca, quando false tira
-}
 </script>
-
 <template>
   <div class="min-h-screen bg-gray-100 transition-colors dark:bg-gray-900">
     <!-- Barra de navegação -->
-    <header class="sticky top-0 z-10 bg-escola-600 text-white shadow-md">
-      <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <a href="#" class="flex items-center gap-2 text-xl font-bold">
-          <span>🍔</span> Cantina da Escola
-        </a>
-
-        <div class="flex items-center gap-2 sm:gap-4">
-          <a href="#" class="rounded-lg bg-escola-700 px-3 py-2 font-semibold">Cardápio</a>
-          <a href="#" class="rounded-lg px-3 py-2 transition-colors hover:bg-escola-700">Meus Pedidos</a>
-          <a href="#" class="rounded-lg px-3 py-2 transition-colors hover:bg-escola-700">🛒 Carrinho</a>
-          <button
-          @click ="alternarTema"
-            class="rounded-lg px-2 py-2 transition-colors hover:bg-escola-700"
-            title="Modo escuro"
-          >
-            {{escuro ? '☀️' : '🌙'}}
-          </button>
-        </div>
-      </nav>
-    </header>
-
+    <NavBar></NavBar>
+    
     <main class="mx-auto max-w-6xl px-4 py-6">
       <h1 class="mb-1 text-3xl font-bold text-gray-800 dark:text-gray-100">Cardápio</h1>
       <p class="mb-6 text-gray-500 dark:text-gray-400">Escolha seu lanche e faça seu pedido sem pegar fila 😉</p>
